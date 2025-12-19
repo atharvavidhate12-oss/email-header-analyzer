@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Email Analysis Result</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #0f2027;
+      color: #ffffff;
+      padding: 40px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h1 {
+      margin-bottom: 25px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 20px;
+      border-radius: 14px;
+    }
+
+    .status-pass {
+      color: #00ff9c;
+      font-weight: 700;
+    }
+
+    .status-fail {
+      color: #ff4d4d;
+      font-weight: 700;
+    }
+
+    .status-warn {
+      color: #ffcc00;
+      font-weight: 700;
+    }
+
+    .score {
+      font-size: 42px;
+      font-weight: 700;
+      margin-top: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 30px;
+      background: linear-gradient(to right, #0072ff, #00c6ff);
+      padding: 14px 24px;
+      border-radius: 10px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .section {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>🔍 Email Analysis Result</h1>
+
+    <div class="grid">
+      <div class="card">
+        <h3>SPF</h3>
+        <p class="status-{{ 'pass' if result.spf == 'PASS' else 'fail' }}">{{ result.spf }}</p>
+      </div>
+
+      <div class="card">
+        <h3>DKIM</h3>
+        <p class="status-{{ 'pass' if result.dkim == 'PASS' else 'fail' }}">{{ result.dkim }}</p>
+      </div>
+
+      <div class="card">
+        <h3>DMARC</h3>
+        <p class="status-{{ 'pass' if result.dmarc == 'PASS' else 'fail' }}">{{ result.dmarc }}</p>
+      </div>
+
+      <div class="card">
+        <h3>Phishing Score</h3>
+        <div class="score">{{ result.score }}/100</div>
+      </div>
+    </div>
+
+    <div class="card section">
+      <h3>🚨 Threat Indicators</h3>
+      <p>Spoofing Detected: <b>{{ result.spoofing }}</b></p>
+      <p>Impersonation: <b>{{ result.impersonation }}</b></p>
+      <p>Suspicious Domain: <b>{{ result.suspicious_domain }}</b></p>
+      <p>Authentication Status: <b>{{ result.authentication }}</b></p>
+    </div>
+
+    <div class="card section">
+      <h3>📄 Report</h3>
+      <p>PDF Report Generated:</p>
+      <code>{{ result.report }}</code>
+    </div>
+
+    <a class="btn" href="/">Analyze Another Email</a>
+  </div>
+</body>
+</html>

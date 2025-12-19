@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Email Header Analyzer | SOC Tool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 40px;
+      width: 420px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 14px;
+      opacity: 0.85;
+      margin-bottom: 30px;
+    }
+
+    .upload-box {
+      border: 2px dashed rgba(255, 255, 255, 0.3);
+      padding: 25px;
+      border-radius: 12px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    input[type=file] {
+      display: none;
+    }
+
+    label {
+      cursor: pointer;
+      display: block;
+    }
+
+    .btn {
+      background: linear-gradient(to right, #0072ff, #00c6ff);
+      border: none;
+      padding: 14px;
+      border-radius: 10px;
+      color: white;
+      font-weight: 600;
+      width: 100%;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    footer {
+      margin-top: 25px;
+      font-size: 12px;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h1>📧 Email Header Analyzer</h1>
+    <p>Upload a <b>.eml</b> file to analyze phishing, spoofing & authentication failures</p>
+
+    <form method="POST" enctype="multipart/form-data">
+      <div class="upload-box">
+        <label>
+          📂 Click to upload .eml file
+          <input type="file" name="email" accept=".eml" required>
+        </label>
+      </div>
+
+      <button class="btn" type="submit">Analyze Email</button>
+    </form>
+
+    <footer>Security Operations Center • Phishing Analysis Tool</footer>
+  </div>
+</body>
+</html>
